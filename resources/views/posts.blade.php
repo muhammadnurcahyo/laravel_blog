@@ -15,7 +15,7 @@
 
                         @foreach ($posts as $post)
                           <h2><a href="/posts/{{ $post['slug'] }}">{{ $post["title"] }}</a> </h2>
-                          <h6>{{ $post["author"] }}</h6>
+                          <h6>By: {{ $post["author"] }}</h6>
                           <p>{{ $post["body"] }}</p>
                         @endforeach
 
