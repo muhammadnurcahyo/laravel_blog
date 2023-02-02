@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('layouts.main')
 
 @section('konten')
     <main id="main">
@@ -211,6 +211,7 @@
                 </div> <!-- End .row -->
             </div>
         </section> <!-- End Post Grid Section -->
+
 
         <!-- ======= Culture Category Section ======= -->
         <section class="category-section">

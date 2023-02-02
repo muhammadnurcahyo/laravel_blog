@@ -1,4 +1,5 @@
-@extends('layout')
+
+@extends('layouts.main')
 
 
 @section('konten')
@@ -9,10 +10,16 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-9">
-                        <h3 class="category-title">Search Results</h3>
+                        <h3 class="category-title">Halaman Blog</h3>
 
 
-                        @foreach ($blogs as $blog)
+                        @foreach ($posts as $post)
+                          <h2><a href="/posts/{{ $post['slug'] }}">{{ $post["title"] }}</a> </h2>
+                          <h6>{{ $post["author"] }}</h6>
+                          <p>{{ $post["body"] }}</p>
+                        @endforeach
+
+                        {{-- @foreach ($posts as $post)
                             <div class="d-md-flex post-entry-2 small-img">
                                 <a href="single-post.html" class="me-4 thumbnail">
                                     <img src="assets/img/post-landscape-6.jpg" alt="" class="img-fluid">
@@ -20,16 +27,17 @@
                                 <div>
                                     <div class="post-meta"><span class="date">Business</span> <span
                                             class="mx-1">&bullet;</span> <span>Jul 5th '22</span></div>
-                                    <h3><a href="/blogs/{{ $blog['id'] }}">{{ $blog['title'] }}</a></h3>
-                                    <p>{{ $blog['exceprt'] }}</p>
+                                    <h3><a href="/blogs/{{ $posts->id }}">{{ $posts->title }}</a></h3>
+                                    <p>{{ $posts->exceprt }}</p>
                                     <div class="d-flex align-items-center author">
                                         <div class="photo">
+                                        <a href="/detailBlog">Read More</a>
                                         </div>
 
                                     </div>
                                 </div>
                             </div>
-                        @endforeach
+                        @endforeach --}}
 
 
                     </div>
