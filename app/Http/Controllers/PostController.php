@@ -15,10 +15,10 @@ class PostController extends Controller
         ]);
     }
 
-    public function show($id){
-        return view('posts', [
-            "title"=>"Detail Blog",
-            "posts" => Post::find($id)  //model post
+    public function show(Post $post){           //untuk menampilkan detail postingan, post dari web.php
+        return view('post', [
+            "title"=>"wkwk",
+            "post" => $post //model post
         ]);
     }
 }

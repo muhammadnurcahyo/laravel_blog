@@ -14,9 +14,8 @@
 
 
                         @foreach ($posts as $post)
-                          <h2><a href="/posts/{{ $post['slug'] }}">{{ $post["title"] }}</a> </h2>
-                          <h6>By: {{ $post["author"] }}</h6>
-                          <p>{{ $post["body"] }}</p>
+                          <h2><a href="/posts/{{ $post->slug }}">{{ $post->title }}</a> </h2>
+                          <p>{{ $post->body }}</p>
                         @endforeach
 
                         {{-- @foreach ($posts as $post)
@@ -38,8 +37,6 @@
                                 </div>
                             </div>
                         @endforeach --}}
-
-
                     </div>
 
                     <div class="col-md-3">
