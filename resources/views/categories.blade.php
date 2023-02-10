@@ -9,18 +9,16 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-9">
-                        <h3 class="category-title">Halaman Blog</h3>
+                        <h3 class="category-title">Halaman Kategori</h3>
 
 
-                        @foreach ($posts as $post)
-                            <article class="mb-5 border-bottom">
-                                <h2><a href="/posts/{{ $post->slug }}">{{ $post->title }}</a> </h2>
-                                <p>By <a href="/authors/{{ $post->author->username }} " style="color: blue;">{{ $post->author->name }}</a>  in <a href="/categories/{{ $post->category->slug }}" style="color: blue;">
-                                        {{ $post->category->name }} </a></p>
-                                <p>{{ $post->exceprt }}</p>
+                        @foreach ($categories as $category)
+                            <ul>
+                                <li>
+                                    <h2><a href="/categories/{{ $category->slug }}">{{ $category->name }}</a> </h2>
 
-                                 <a href="/posts/{{ $post->slug }}"><button class="btn btn-primary mb-3">  Read More </button></a> 
-                            </article>
+                                </li>
+                            </ul>
                         @endforeach
 
                         {{-- @foreach ($posts as $post)
