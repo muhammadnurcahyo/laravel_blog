@@ -4,24 +4,88 @@
 @section('konten')
     <main id="main">
 
+        <!-- ======= Hero Slider Section ======= -->
+        <section id="hero-slider" class="hero-slider">
+            <div class="container-md" data-aos="fade-in">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="swiper sliderFeaturedPosts">
+
+                            @if ($posts->count())
+                                <div class="swiper-wrapper">
+                                    <div class="swiper-slide">
+                                        <a href="single-post.html" class="img-bg d-flex align-items-end"
+                                            style="background-image: url('assets/img/post-slide-1.jpg');">
+                                            <div class="img-bg-inner">
+                                                <h2>{{ $posts[0]->title }}</h2>
+                                                <p>{{ $posts[0]->exceprt }}</p>
+                                                <p><small>Last update 3 mins ago</small></p>
+                                            </div>
+
+                                        </a>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <a href="single-post.html" class="img-bg d-flex align-items-end"
+                                            style="background-image: url('assets/img/post-slide-2.jpg');">
+                                            <div class="img-bg-inner">
+                                                <h2>{{ $posts[1]->title }}</h2>
+                                                <p>{{ $posts[1]->exceprt }}</p>
+                                                <p><small>Last update 3 mins ago</small></p>
+                                            </div>
+
+                                        </a>
+                                    </div>
+                                @else
+                                    <p>not found</p>
+                            @endif
+
+                        </div>
+                        <div class="custom-swiper-button-next">
+                            <span class="bi-chevron-right"></span>
+                        </div>
+                        <div class="custom-swiper-button-prev">
+                            <span class="bi-chevron-left"></span>
+                        </div>
+
+                        <div class="swiper-pagination"></div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </section><!-- End Hero Slider Section -->
+
         <!-- ======= Search Results ======= -->
         <section id="search-result" class="search-result">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-9">
+                    <div class="col-md-12">
                         <h3 class="category-title">Halaman Blog</h3>
 
-
-                        @foreach ($posts as $post)
-                            <article class="mb-5 border-bottom">
-                                <h2><a href="/posts/{{ $post->slug }}">{{ $post->title }}</a> </h2>
-                                <p>By <a href="/authors/{{ $post->author->username }} " style="color: blue;">{{ $post->author->name }}</a>  in <a href="/categories/{{ $post->category->slug }}" style="color: blue;">
-                                        {{ $post->category->name }} </a></p>
-                                <p>{{ $post->exceprt }}</p>
-
-                                 <a href="/posts/{{ $post->slug }}"><button class="btn btn-primary mb-3">  Read More </button></a> 
-                            </article>
-                        @endforeach
+                    
+                        <br><br>
+                     
+                            <div class="row">
+                                @foreach ($posts as $post)
+                                <div class="col-md-4">
+                                    <div class="card" >
+                                        <img src="assets/img/post-slide-1.jpg" class="card-img-top" alt="...">
+                                        <div class="card-body">
+                                          <h5 class="card-title"><a href="/posts/{{ $post->slug }}">{{ $post->title }}</a></h5>
+                                          <p class="card-text">By <a href="/authors/{{ $post->author->username }} "
+                                            style="color: blue;">{{ $post->author->name }}</a> in <a
+                                            href="/categories/{{ $post->category->slug }}" style="color: blue;">
+                                            {{ $post->category->name }} </a></p>
+                                            <p>{{ $post->exceprt }}</p>
+                                            <a href="/posts/{{ $post->slug }}"><button class="btn btn-primary mb-3"> Read
+                                                More
+                                            </button></a>
+                                        </div>
+                                      </div>
+            
+                                </div>
+                                @endforeach
+                            </div>
+                      
 
                         {{-- @foreach ($posts as $post)
                             <div class="d-md-flex post-entry-2 small-img">
@@ -44,7 +108,7 @@
                         @endforeach --}}
                     </div>
 
-                    <div class="col-md-3">
+                    {{-- <div class="col-md-3">
                         <!-- ======= Sidebar ======= -->
                         <div class="aside-block">
 
@@ -265,7 +329,7 @@
                             </ul>
                         </div><!-- End Tags -->
 
-                    </div>
+                    </div> --}}
 
                 </div>
             </div>

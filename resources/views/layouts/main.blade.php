@@ -30,6 +30,7 @@
     <!-- Template Main CSS Files -->
     <link href="{{ asset('assets/css/variables.css')  }}" rel="stylesheet">
     <link href="{{ asset('assets/css/main.css')  }}" rel="stylesheet">
+    
 
     <!-- =======================================================
   * Template Name: ZenBlog - v1.3.0

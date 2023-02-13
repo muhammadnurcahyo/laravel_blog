@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,12 +28,7 @@ Route::get('/admin', function () {
 
 // ============================================================
 
-// untuk frontend
-Route::get('/', function () {
-    return view('home', [
-        'title' => 'home',
-    ]);
-});
+Route::get('/', [HomeController::class, 'index']);
 
 // halaman posts
 Route::get('/blog', [PostController::class, 'index']);
