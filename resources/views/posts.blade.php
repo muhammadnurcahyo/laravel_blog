@@ -4,11 +4,27 @@
 @section('konten')
     <main id="main">
 
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-6 mt-5">
+                    <form action="/blog">
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" placeholder="Searching..." name="search"
+                                value="{{ request('search') }}">
+                            <button class="btn btn-outline-secondary" type="submit">Search</button>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+
         <!-- ======= Hero Slider Section ======= -->
         <section id="hero-slider" class="hero-slider">
             <div class="container-md" data-aos="fade-in">
                 <div class="row">
                     <div class="col-12">
+
                         @if ($posts->count())
                             <div class="swiper sliderFeaturedPosts">
 
@@ -25,33 +41,23 @@
 
                                         </a>
                                     </div>
-                                    <div class="swiper-slide">
-                                        <a href="/posts/{{ $posts[1]->slug }}" class="img-bg d-flex align-items-end"
-                                            style="">
-                                            <div class="img-bg-inner">
-                                                <h2>{{ $posts[1]->title }}</h2>
-                                                <p>{{ $posts[1]->exceprt }}</p>
-                                                <p><small>Last update 3 mins ago</small></p>
-                                            </div>
+                                   
 
-                                        </a>
-                                    </div>
-                                @else
-                                    <p>not found</p>
+                                </div>
+                                <div class="custom-swiper-button-next">
+                                    <span class="bi-chevron-right"></span>
+                                </div>
+                                <div class="custom-swiper-button-prev">
+                                    <span class="bi-chevron-left"></span>
+                                </div>
+
+                                <div class="swiper-pagination"></div>
+                            </div>
+                        @else
+                            <p>not found</p>
                         @endif
-
                     </div>
-                    <div class="custom-swiper-button-next">
-                        <span class="bi-chevron-right"></span>
-                    </div>
-                    <div class="custom-swiper-button-prev">
-                        <span class="bi-chevron-left"></span>
-                    </div>
-
-                    <div class="swiper-pagination"></div>
                 </div>
-            </div>
-            </div>
             </div>
         </section><!-- End Hero Slider Section -->
 
@@ -63,7 +69,7 @@
                         <h3 class="category-title">Halaman Blog</h3>
 
                         <div class="row">
-                            @foreach ($posts->skip(2) as $post)
+                            @foreach ($posts->skip(1) as $post)
                                 <div class="col-md-4">
                                     <div class="card mb-5">
                                         <div class="position-absolute  px-3 py-2 text-white"
@@ -71,11 +77,13 @@
                                                 href="/categories/{{ $post->category->slug }}"
                                                 style="color: white; font-weight:500;">{{ $post->category->name }}</a>
                                         </div>
-                                        <img src="https://source.unsplash.com/500x400?{{ $post->category->name}}" class="card-img-fluid-top" alt="...">
+                                        <img src="https://source.unsplash.com/500x400?{{ $post->category->name }}"
+                                            class="card-img-fluid-top" alt="...">
                                         <div class="card-body">
                                             <h5 class="card-title"><a
                                                     href="/posts/{{ $post->slug }}">{{ $post->title }}</a></h5>
-                                            <p class="card-text">By <a href="/authors/{{ $post->author->username }} " style="color: green; font-weight:500;">{{ $post->author->name }} </a>
+                                            <p class="card-text">By <a href="/authors/{{ $post->author->username }} "
+                                                    style="color: green; font-weight:500;">{{ $post->author->name }} </a>
                                                 <small>{{ $posts[0]->created_at->diffForHumans() }}</small>
                                             </p>
                                             <p>{{ $post->exceprt }}</p>
@@ -336,8 +344,12 @@
                     </div> --}}
 
                 </div>
+
             </div>
+
         </section> <!-- End Search Result -->
+
+
 
     </main><!-- End #main -->
 @endsection

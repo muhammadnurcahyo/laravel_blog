@@ -8,10 +8,20 @@ use Illuminate\Http\Request;
 class PostController extends Controller
 {
     //
+
     public function index(){
+
+        //pencarian
+        $posts = Post::latest();
+
+        if(request('search')){
+            $posts->where('title', 'like', '%' . request('search') . '%');
+        }
+
+        // dd(request('search'));
         return view('posts', [
             "title"=>"All Posts",
-            "posts" => Post::with(['author', 'category'])->latest()->get()  //model post, latest untuk menampilkan data terbaru di buat,
+            "posts" => $posts->get()  //model post, latest untuk menampilkan data terbaru di buat,
             // with(untuk menyingkat query biar webnya bisa lebih kecepatan loading )
         ]);
     }
