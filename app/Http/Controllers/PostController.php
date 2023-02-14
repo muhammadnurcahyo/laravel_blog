@@ -10,14 +10,15 @@ class PostController extends Controller
     //
     public function index(){
         return view('posts', [
-            "title"=>"posts",
-            "posts" => Post::latest()->get()  //model post, latest untuk menampilkan data terbaru di buat
+            "title"=>"All Posts",
+            "posts" => Post::with(['author', 'category'])->latest()->get()  //model post, latest untuk menampilkan data terbaru di buat,
+            // with(untuk menyingkat query biar webnya bisa lebih kecepatan loading )
         ]);
     }
 
     public function show(Post $post){           //untuk menampilkan detail postingan, post dari web.php
         return view('post', [
-            "title"=>"wkwk",
+            "title"=>"Single Post",
             "post" => $post //model post
         ]);
     }

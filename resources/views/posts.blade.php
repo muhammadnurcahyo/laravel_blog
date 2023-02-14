@@ -9,14 +9,15 @@
             <div class="container-md" data-aos="fade-in">
                 <div class="row">
                     <div class="col-12">
-                        <div class="swiper sliderFeaturedPosts">
+                        @if ($posts->count())
+                            <div class="swiper sliderFeaturedPosts">
 
-                            @if ($posts->count())
+
                                 <div class="swiper-wrapper">
                                     <div class="swiper-slide">
-                                        <a href="single-post.html" class="img-bg d-flex align-items-end"
-                                            style="background-image: url('assets/img/post-slide-1.jpg');">
-                                            <div class="img-bg-inner">
+                                        <a href="/posts/{{ $posts[0]->slug }}" class="img-bg d-flex align-items-end"
+                                            style="">
+                                            <div class="img-bg-inner" style=" ">
                                                 <h2>{{ $posts[0]->title }}</h2>
                                                 <p>{{ $posts[0]->exceprt }}</p>
                                                 <p><small>Last update 3 mins ago</small></p>
@@ -25,8 +26,8 @@
                                         </a>
                                     </div>
                                     <div class="swiper-slide">
-                                        <a href="single-post.html" class="img-bg d-flex align-items-end"
-                                            style="background-image: url('assets/img/post-slide-2.jpg');">
+                                        <a href="/posts/{{ $posts[1]->slug }}" class="img-bg d-flex align-items-end"
+                                            style="">
                                             <div class="img-bg-inner">
                                                 <h2>{{ $posts[1]->title }}</h2>
                                                 <p>{{ $posts[1]->exceprt }}</p>
@@ -37,19 +38,19 @@
                                     </div>
                                 @else
                                     <p>not found</p>
-                            @endif
+                        @endif
 
-                        </div>
-                        <div class="custom-swiper-button-next">
-                            <span class="bi-chevron-right"></span>
-                        </div>
-                        <div class="custom-swiper-button-prev">
-                            <span class="bi-chevron-left"></span>
-                        </div>
-
-                        <div class="swiper-pagination"></div>
                     </div>
+                    <div class="custom-swiper-button-next">
+                        <span class="bi-chevron-right"></span>
+                    </div>
+                    <div class="custom-swiper-button-prev">
+                        <span class="bi-chevron-left"></span>
+                    </div>
+
+                    <div class="swiper-pagination"></div>
                 </div>
+            </div>
             </div>
             </div>
         </section><!-- End Hero Slider Section -->
@@ -61,31 +62,34 @@
                     <div class="col-md-12">
                         <h3 class="category-title">Halaman Blog</h3>
 
-                    
-                        <br><br>
-                     
-                            <div class="row">
-                                @foreach ($posts as $post)
+                        <div class="row">
+                            @foreach ($posts->skip(2) as $post)
                                 <div class="col-md-4">
-                                    <div class="card" >
-                                        <img src="assets/img/post-slide-1.jpg" class="card-img-top" alt="...">
-                                        <div class="card-body">
-                                          <h5 class="card-title"><a href="/posts/{{ $post->slug }}">{{ $post->title }}</a></h5>
-                                          <p class="card-text">By <a href="/authors/{{ $post->author->username }} "
-                                            style="color: blue;">{{ $post->author->name }}</a> in <a
-                                            href="/categories/{{ $post->category->slug }}" style="color: blue;">
-                                            {{ $post->category->name }} </a></p>
-                                            <p>{{ $post->exceprt }}</p>
-                                            <a href="/posts/{{ $post->slug }}"><button class="btn btn-primary mb-3"> Read
-                                                More
-                                            </button></a>
+                                    <div class="card mb-5">
+                                        <div class="position-absolute  px-3 py-2 text-white"
+                                            style="background-color: green"><a
+                                                href="/categories/{{ $post->category->slug }}"
+                                                style="color: white; font-weight:500;">{{ $post->category->name }}</a>
                                         </div>
-                                      </div>
-            
+                                        <img src="https://source.unsplash.com/500x400?{{ $post->category->name}}" class="card-img-fluid-top" alt="...">
+                                        <div class="card-body">
+                                            <h5 class="card-title"><a
+                                                    href="/posts/{{ $post->slug }}">{{ $post->title }}</a></h5>
+                                            <p class="card-text">By <a href="/authors/{{ $post->author->username }} " style="color: green; font-weight:500;">{{ $post->author->name }} </a>
+                                                <small>{{ $posts[0]->created_at->diffForHumans() }}</small>
+                                            </p>
+                                            <p>{{ $post->exceprt }}</p>
+                                            <a href="/posts/{{ $post->slug }}"><button class="btn btn-primary mb-3"
+                                                    style="background-color: green; border-color:white"> Read
+                                                    More
+                                                </button></a>
+                                        </div>
+                                    </div>
+
                                 </div>
-                                @endforeach
-                            </div>
-                      
+                            @endforeach
+                        </div>
+
 
                         {{-- @foreach ($posts as $post)
                             <div class="d-md-flex post-entry-2 small-img">

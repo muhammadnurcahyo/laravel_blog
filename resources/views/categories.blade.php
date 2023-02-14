@@ -8,7 +8,7 @@
         <section id="search-result" class="search-result">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-9">
+                    <div class="col-md-12">
                         <h3 class="category-title">Halaman Kategori</h3>
 
 
@@ -20,6 +20,8 @@
                                 </li>
                             </ul>
                         @endforeach
+
+                     
 
                         {{-- @foreach ($posts as $post)
                             <div class="d-md-flex post-entry-2 small-img">
@@ -42,7 +44,7 @@
                         @endforeach --}}
                     </div>
 
-                    <div class="col-md-3">
+                    {{-- <div class="col-md-3">
                         <!-- ======= Sidebar ======= -->
                         <div class="aside-block">
 
@@ -263,7 +265,7 @@
                             </ul>
                         </div><!-- End Tags -->
 
-                    </div>
+                    </div> --}}
 
                 </div>
             </div>

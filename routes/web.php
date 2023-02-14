@@ -53,7 +53,7 @@ Route::get('/users/{users:slug}', [UserController::class, 'show']);
 Route::get('/authors/{author:username}', function(User $author){
     return view('posts', [
         'title' => 'user',
-        'posts' => $author->posts
+        'posts' => $author->posts->load('category', 'author') //load(untuk menyingkat query biar webnya bisa lebih kecepatan loading )
     ]);
 });
 

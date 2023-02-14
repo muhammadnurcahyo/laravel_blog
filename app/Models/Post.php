@@ -15,7 +15,7 @@ class Post extends Model
     // ];
 
     protected $guarded = ['id'];  //id yg di jaga atau ga boleh di isi/diganti
-    protected $with = ['category', 'author'];
+   
 
     public function category (){
         return $this->belongsTo(Category::class);        //untuk menyambungkan relasi tabel kategori dengan post, one to one

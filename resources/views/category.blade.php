@@ -1,4 +1,3 @@
-
 @extends('layouts.main')
 
 
@@ -12,11 +11,36 @@
                     <div class="col-md-9">
                         <h3 class="category-title">Halaman Kategori: {{ $category }}</h3>
 
+                        <div class="row">
+                            @foreach ($posts as $post)
+                                <div class="col-md-4">
+                                    <div class="card mb-5" style="margin-bottom:20px;">
+                                        <div class="position-absolute  px-3 py-2 text-white"
+                                            style="background-color: green"><a
+                                                href="/categories/{{ $post->category->slug }}"
+                                                style="color: white; font-weight:500;">{{ $post->category->name }}</a>
+                                        </div>
+                                        <img src="../assets/img/post-slide-1.jpg" class="card-img-top" alt="...">
+                                        <div class="card-body">
+                                            <h5 class="card-title"><a
+                                                    href="/posts/{{ $post->slug }}">{{ $post->title }}</a></h5>
+                                            <p class="card-text">By <a href="/authors/{{ $post->author->username }} "
+                                                    style="color: green; font-weight:500;">{{ $post->author->name }} </a>
+                                                <small>{{ $posts[0]->created_at->diffForHumans() }}</small>
+                                            </p>
+                                            <p>{{ $post->exceprt }}</p>
+                                            <a href="/posts/{{ $post->slug }}"><button class="btn btn-primary mb-3"
+                                                    style="background-color: green; border-color:white"> Read
+                                                    More
+                                                </button></a>
+                                        </div>
+                                    </div>
 
-                        @foreach ($posts as $post)
-                          <h2><a href="/posts/{{ $post->slug }}">{{ $post->title }}</a> </h2>
-                          <p>{{ $post->exceprt }}</p>
-                        @endforeach
+                                </div>
+                            @endforeach
+                        </div>
+
+
 
                         {{-- @foreach ($posts as $post)
                             <div class="d-md-flex post-entry-2 small-img">
