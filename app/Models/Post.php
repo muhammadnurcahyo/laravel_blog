@@ -2,8 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Category;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Foundation\Auth\User;
 
 class Post extends Model
 {
@@ -13,6 +15,17 @@ class Post extends Model
     //     'excerpt',
     //     'body',
     // ];
+
+
+    //untuk searching
+    public function scopeFilter($query, array $filters)
+    {
+      
+        if(isset($filters['search']) ? $filters['search'] : false){
+            $query->where('title', 'like', '%' . $filters['search'] . '%')
+                  ->orWhere('body', 'like', '%'. $filters['search'] . '%');
+        }
+    }
 
     protected $guarded = ['id'];  //id yg di jaga atau ga boleh di isi/diganti
    

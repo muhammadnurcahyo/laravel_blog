@@ -287,8 +287,12 @@
                     </div>
 
                 </div>
+
+                
             </div>
         </section> <!-- End Search Result -->
+
+        
 
     </main><!-- End #main -->
 @endsection

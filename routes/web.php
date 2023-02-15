@@ -28,7 +28,7 @@ Route::get('/admin', function () {
 
 // ============================================================
 
-Route::get('/', [HomeController::class, 'index']);
+Route::get('/', [PostController::class, 'index']);
 
 // halaman posts
 Route::get('/blog', [PostController::class, 'index']);

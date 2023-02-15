@@ -11,17 +11,11 @@ class PostController extends Controller
 
     public function index(){
 
-        //pencarian
-        $posts = Post::latest();
-
-        if(request('search')){
-            $posts->where('title', 'like', '%' . request('search') . '%');
-        }
-
+      
         // dd(request('search'));
         return view('posts', [
             "title"=>"All Posts",
-            "posts" => $posts->get()  //model post, latest untuk menampilkan data terbaru di buat,
+            "posts" => Post::latest()->filter(request(['search']))->paginate(7)->withQueryString() //model post, latest untuk menampilkan data terbaru di buat,
             // with(untuk menyingkat query biar webnya bisa lebih kecepatan loading )
         ]);
     }

@@ -11,8 +11,8 @@
             <h1 class="mb-5">{{ $post->title }}</h1>
             <p>By <a href="/authors/{{ $post->author->username }}">{{ $post->author->name }}</a>  in <a href="/categories/{{ $post->category->slug }}"> {{ $post->category->name }}   </a></p>
             {!! $post->body !!}
-            <br><br>
-                <a href="/blog"><button class="btn btn-primary">back to blog </button> </a>
+            <br>
+                <a href="/blog"><button class="btn btn-primary" style="background-color: green; border-color:white;">back to blog </button> </a>
 
             <br><br><br>
         </div>

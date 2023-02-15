@@ -26,23 +26,19 @@
                     <div class="col-12">
 
                         @if ($posts->count())
-                            <div class="swiper sliderFeaturedPosts">
-
-
+                            <div class="swiper sliderFeaturedPosts" style="border-radius: 10px;">
                                 <div class="swiper-wrapper">
                                     <div class="swiper-slide">
-                                        <a href="/posts/{{ $posts[0]->slug }}" class="img-bg d-flex align-items-end"
-                                            style="">
+                                        <a href="/posts?category={{ $posts[0]->slug }}"
+                                            class="img-bg d-flex align-items-end" style="">
                                             <div class="img-bg-inner" style=" ">
                                                 <h2>{{ $posts[0]->title }}</h2>
-                                                <p>{{ $posts[0]->exceprt }}</p>
+                                                <span style="color: white;">{{ $posts[0]->exceprt }}</span>
                                                 <p><small>Last update 3 mins ago</small></p>
                                             </div>
 
                                         </a>
                                     </div>
-                                   
-
                                 </div>
                                 <div class="custom-swiper-button-next">
                                     <span class="bi-chevron-right"></span>
@@ -53,9 +49,7 @@
 
                                 <div class="swiper-pagination"></div>
                             </div>
-                        @else
-                            <p>not found</p>
-                        @endif
+
                     </div>
                 </div>
             </div>
@@ -345,6 +339,13 @@
 
                 </div>
 
+
+                <div class="d-flex justify-content-end">
+                    {{-- untuk pagination --}}
+                     {{ $posts->links() }} 
+                </div>
+
+
             </div>
 
         </section> <!-- End Search Result -->
@@ -352,4 +353,7 @@
 
 
     </main><!-- End #main -->
+@else
+    <p>not found</p>
+    @endif
 @endsection
