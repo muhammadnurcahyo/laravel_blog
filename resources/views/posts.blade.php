@@ -342,7 +342,7 @@
 
                 <div class="d-flex justify-content-end">
                     {{-- untuk pagination --}}
-                     {{ $posts->links() }} 
+                    {{ $posts->links() }}
                 </div>
 
 
